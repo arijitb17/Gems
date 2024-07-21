@@ -40,7 +40,6 @@ export default function RootLayout({
               </div>
             </ClerkLoading>
             <ClerkLoaded>
-              
               <Navbar />
               <main className="flex-grow">{children}</main>
               <Footer />
