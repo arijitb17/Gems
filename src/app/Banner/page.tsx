@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Define the descriptions for buttons
 interface Descriptions {
   [key: string]: string;
 }
@@ -10,11 +11,14 @@ const descriptions: Descriptions = {
   'FAQs': 'Frequently asked questions about gemstones.',
 };
 
+// Define the props for the Banner component
 interface BannerProps {
   onDescriptionClick: (desc: string) => void;
 }
 
+// Define the Banner component using the BannerProps type
 const Banner: React.FC<BannerProps> = ({ onDescriptionClick }) => {
+  // Handle button click to call the passed function with the description
   const handleButtonClick = (title: string) => {
     onDescriptionClick(descriptions[title]);
   };
