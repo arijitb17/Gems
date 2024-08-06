@@ -86,17 +86,15 @@ const Navbar: React.FC = () => {
               </div>
 
               {/* Navbar Items */}
-              <div className="bg-cyan-950 rounded-b-xl">
+              <div className="border-teal-400 border-[2px] rounded-xl">
                 <ul className="flex justify-between py-4 px-6">
                   
                   <div className="flex gap-6 items-center">
                     {!user ? (
                       <>
-                        <Link href="/sign-in">
-                          <li>Login</li>
-                        </Link>
+                        
                         <Link href="/sign-up">
-                          <li>Sign Up</li>
+                          <li className='text-slate-200'>Sign Up</li>
                         </Link>
                       </>
                     ) : (
