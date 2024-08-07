@@ -25,11 +25,7 @@ export const InfiniteMovingCards = ({
 
   const [start, setStart] = useState(false);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
-
-  function addAnimation() {
+  const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -44,10 +40,13 @@ export const InfiniteMovingCards = ({
       getSpeed();
       setStart(true);
     }
-  }
+  };
 
-  // Example setup in InfiniteMovingCards component
-const getDirection = () => {
+  useEffect(() => {
+    addAnimation();
+  }, [addAnimation]); // Include addAnimation in the dependency array
+
+  const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
         containerRef.current.style.setProperty("--animation-direction", "forwards");
@@ -56,7 +55,7 @@ const getDirection = () => {
       }
     }
   };
-  
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
@@ -68,7 +67,7 @@ const getDirection = () => {
       }
     }
   };
-  
+
   return (
     <div
       ref={containerRef}

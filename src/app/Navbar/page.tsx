@@ -10,6 +10,7 @@ import {
 import Cartcount from './Cartcount';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
+import Image from 'next/image';
 
 const NavItem: React.FC<{ label: string; onClick: () => void }> = ({ label, onClick }) => {
   return (
@@ -126,16 +127,20 @@ const Navbar: React.FC = () => {
                 window.location.href = '/'; // Replace with your home page URL
               }}
             >
-              <img
-                className="block lg:hidden h-8 w-auto transition-opacity duration-300 ease-in-out transform hover:opacity-80 hover:scale-105"
-                src="/images/JGJ.jpg"
-                alt="Logo"
-              />
-              <img
-                className="hidden lg:block h-8 w-auto transition-opacity duration-300 ease-in-out transform hover:opacity-80 hover:scale-105"
-                src="/images/JGJ.jpg"
-                alt="Logo"
-              />
+           
+
+<Image
+  className="block  h-8 w-auto transition-opacity duration-300 ease-in-out transform hover:opacity-80 hover:scale-105"
+  src="/images/JGJ.jpg"
+  alt="Logo"
+  width={200}  // Replace with the actual width of your image
+  height={500}  // Replace with the actual height of your image
+/>
+
+
+
+
+
             </div>
 
             {/* Hamburger icon for mobile */}

@@ -24,22 +24,6 @@ export const ImagesSlider = ({
   const [loading, setLoading] = useState(false);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + 1 === images.length ? 0 : prevIndex + 1
-    );
-  };
-
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  useEffect(() => {
-    loadImages();
-  }, []);
-
   const loadImages = () => {
     setLoading(true);
     const loadPromises = images.map((image) => {
@@ -56,8 +40,28 @@ export const ImagesSlider = ({
         setLoadedImages(loadedImages as string[]);
         setLoading(false);
       })
-      .catch((error) => console.error("Failed to load images", error));
+      .catch((error) => {
+        console.error("Failed to load images", error);
+        setLoading(false); // Ensure loading is set to false even if there's an error
+      });
   };
+
+  useEffect(() => {
+    loadImages();
+  }, [images]); // Add images to the dependency array
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 1 === images.length ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -69,7 +73,7 @@ export const ImagesSlider = ({
 
     window.addEventListener("keydown", handleKeyDown);
 
-    // autoplay
+    // Autoplay
     let interval: any;
     if (autoplay) {
       interval = setInterval(() => {
@@ -81,7 +85,7 @@ export const ImagesSlider = ({
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(interval);
     };
-  }, []);
+  }, [autoplay, handleNext, handlePrevious]);
 
   const slideVariants = {
     initial: {
@@ -126,6 +130,11 @@ export const ImagesSlider = ({
         perspective: "1000px",
       }}
     >
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-40">
+          <div className="text-white">Loading...</div> {/* You can replace this with a spinner or other loading indicator */}
+        </div>
+      )}
       {areImagesLoaded && children}
       {areImagesLoaded && overlay && (
         <div
