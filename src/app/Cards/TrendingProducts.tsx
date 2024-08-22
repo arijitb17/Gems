@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Cards from './page'; // Adjust the import path as per your project structure
+import Cards from '../components/Cards'; // Adjust the import path as per your project structure
 import { products } from '../../../utils/products'; // Adjust the import path as per your project structure
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Import arrow icons
 

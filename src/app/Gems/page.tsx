@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { products } from "../../../utils/products"; 
 import Banner from '../components/Banner';
-import Cards from "../Cards/page";
+import Cards from "../components/Cards";
 
 const GemstomeList = () => {
 
