@@ -1,45 +1,46 @@
-"use client"
+"use client";
 import React from 'react';
 
-// Define the descriptions for buttons
-interface Descriptions {
-  [key: string]: string;
-}
-
-const descriptions: Descriptions = {
-  'What is a Gemstone?': 'A gemstone is a precious or semi-precious stone that is cut and polished to be used in jewelry.',
-  'What is Gemstone Color?': 'Gemstone color refers to the hue, tone, and saturation of the gemstone.',
-  'FAQs': 'Frequently asked questions about gemstones.',
-};
-
-// Define the props for the Banner component
 interface BannerProps {
-  onDescriptionClick: (desc: string) => void;
+  leftImageSrc: string;
+  rightImageSrc: string;
 }
 
-// Define the Banner component using the BannerProps type
-const Banner: React.FC<BannerProps> = ({ onDescriptionClick }) => {
-  // Handle button click to call the passed function with the description
-  const handleButtonClick = (title: string) => {
-    onDescriptionClick(descriptions[title]);
-  };
-
+const Banner: React.FC<BannerProps> = ({ leftImageSrc, rightImageSrc }) => {
   return (
-    <div className="relative w-full h-64 bg-cover bg-center" style={{ backgroundImage: 'url(/images/banner.jpg)' }}>
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="relative z-10 flex flex-col items-center justify-center h-full py-8">
-        <h1 className="text-white text-4xl font-bold mb-4">Gemstones</h1>
-        <div className="flex space-x-4 mb-2">
-          {Object.keys(descriptions).map((title, index) => (
-            <button
-              key={index}
-              className="p-2 mt-20 text-white hover:underline"
-              onClick={() => handleButtonClick(title)}
-            >
-              {title}
-            </button>
-          ))}
-        </div>
+    <div className="relative w-full h-64 flex">
+      {/* Left Side with Image and Angular Edge */}
+      <div
+        className="w-1/2 h-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${leftImageSrc})`,
+          clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0% 100%)',
+        }}
+      />
+
+      {/* Space Between Images with Angular Cut */}
+      <div
+        className="w-1/2 h-full"
+        style={{
+           // Cream color
+          clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+          borderLeft: '20px solid transparent',
+          borderRight: '20px solid transparent',
+        }}
+      />
+
+      {/* Right Side with Image and Angular Edge */}
+      <div
+        className="w-1/2 h-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${rightImageSrc})`,
+          clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)',
+        }}
+      />
+
+      {/* Overlay with Content */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-slate-800 text-4xl font-bold">Gemstones</h1>
       </div>
     </div>
   );

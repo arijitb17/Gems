@@ -5,29 +5,20 @@ import Banner from "../Banner/page";
 import Cards from "../Cards/page";
 
 const GemstomeList = () => {
-  const [description, setDescription] = useState<string>('');
 
-  const handleDescriptionClick = (desc: string) => {
-    setDescription(desc);
-  };
 
-  const resetDescription = () => {
-    setDescription('');
-  };
+
+ 
 
   return ( 
     <div>
-      <Banner onDescriptionClick={handleDescriptionClick} />
+      <Banner 
+        leftImageSrc="/images/ruby.jpg" 
+        rightImageSrc="/images/topaz.jpeg" 
+      />
       
       <div className="container mx-auto p-4">
-        {description && (
-          <div className="bg-white p-4 mb-4 border border-gray-300 rounded">
-            <button className="text-sm text-gray-600 hover:text-gray-800 float-right" onClick={resetDescription}>
-              Close
-            </button>
-            <p className="text-lg font-semibold text-black">{description}</p>
-          </div>
-        )}
+       
 
         <header className="text-center py-6">
           <h1 className="text-4xl font-bold text-gray-800">Discover Gemstones</h1>
