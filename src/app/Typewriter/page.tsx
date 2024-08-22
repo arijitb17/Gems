@@ -2,7 +2,7 @@
 import React from 'react';
 import { useUser } from '@clerk/nextjs'; // Ensure correct import
 import { TypewriterEffectSmooth } from "../components/ui/typewriter-effect";
-import ClerkPage from "../signin/page"; // Adjust the path as per your project structure
+import ClerkPage from "../components/signin"; // Adjust the path as per your project structure
 
 const Login: React.FC = () => {
   const { user } = useUser(); // Get user from Clerk
