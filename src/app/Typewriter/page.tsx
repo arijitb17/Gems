@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         {/* Adjusted spacing for buttons */}
         <div className="flex justify-center">
           <button className={`${buttonClassName} bg-black hover:bg-slate-600`}>
-            <a href="/Gems" className="flex items-center justify-center h-full w-full text-white">Browse Now</a>
+            <a href="/Gems" className="flex items-center justify-center h-full w-full text-white pb-2">Browse Now</a>
           </button>
         </div>
         {/* Conditionally render ClerkPage */}
