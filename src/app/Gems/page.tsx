@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { products } from "../../../utils/products"; 
-import Banner from "../Banner/page";
+import Banner from '../components/Banner';
 import Cards from "../Cards/page";
 
 const GemstomeList = () => {
