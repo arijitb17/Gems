@@ -36,7 +36,7 @@
     "**/*.tsx",
     "src/**/*",
     ".next/types/**/*.ts"
-, "modals", "actions", "modals"  ],
+, "src/modals", "src/actions", "src/modals"  ],
   "exclude": [
     "node_modules"
   ]
